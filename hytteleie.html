@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Haugtussa hytteutleie</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="code.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-default min-navbar">
+        <div class="container-fluid ">
+            <div class="navbar-header">
+                <!--Dette er ein knapp som dukker opp på små enheter. Ved å klikke på den får du opp alle linkane -->
+                <a class="navbar-brand" id="firmanavn-box" href="#">
+                    <div id="firmanavn">
+                        <object data="logo.svg" type="image/svg+xml"></object>
+                        HAUGTUSSA HYTTEUTLEIE
+                    </div>
+                </a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav ">
+                    <li><a href="#">Om</a></li>
+                    <li><a href="#">Kart</a></li>
+                    <li><a href="#">Aktivitet</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="container text-center min-main-style">
+        <div class="row content">
+            <div class="col-sm-2  text-left min-col">
+                <div class="content-area">
+                    <h4>Område</h4>
+                    <div id="omraade-sjekk">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="fjell-sjekk">Fjell</label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="skog-sjekk">Skog</label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="hav-sjekk">Hav</label>
+                        </div>
+                    </div>
+                    <h4>Antall soverom</h4>
+                    <div id="rom-sjekk">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="1rom-sjekk">1 soverom</label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="2rom-sjekk">2 soverom</label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="3rom-sjekk">3 soverom</label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="4rom-sjekk">4+ soverom</label>
+                        </div>
+                    </div>
+                    <h4>Pris</h4>
+                    <div id="finn-pris">
+                        <div class="input-group">
+                            <input class="form-control" placeholder="fra" name="firstname" type="text" />
+                            <input class="form-control" placeholder="til" name="lastname" type="text" />
+                            <button type="button" style="margin-top: 2px"mar" class="btn btn-primary">Søk</button>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+            <div class="col-sm-6 min-col" id="hyttefelt">
+                <!-- <div class="content-area"  id='test'>
+                    <a href="#" id="mini-info-001">
+                        <div class="media text-left">
+                            <img class="pull-left  mini-bilde img-responsive" id="img-001" src="hytte.jpg">
+                            <div class="media-body mini-text">
+                                <ul></ul>
+                                <p class='omrade'>Område:Fjell</p>
+                                <p class="kort-hytte-info" id="hytte-sum-001">Fin hytte i flotte omgjevnadar. Kort vei til jakt-terreng.</p>
+                                <p class="pris-info">500 kr/døgn</p>
+                                <div class=" table-responsive">
+                                    <table class="table table-condensed text-left kort-nokkel-info ">
+                                        <tr>
+                                            <td>Antall rom:</td>
+                                            <td class='antall-rom'>2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Toalett:</td>
+                                            <td>Ja</td>
+                                        </tr>
+                                        </tr>
+                                        <tr>
+                                            <td>Dusj:</td>
+                                            <td>Ja</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div> -->
+                <template id='hytte-temp'>
+                    <div class="content-area">
+                        <a href="hytteinfo.html?id=" id="mini-info-001">
+                            <div class="media text-left">
+                                <img class="pull-left  mini-bilde img-responsive" id="img-001" src="hytte.jpg">
+                                <div class="media-body mini-text">
+                                    <ul></ul>
+                                    <p>Område:Fjell</p>
+                                    <p class="kort-hytte-info" id="hytte-sum-001">Fin hytte i flotte omgjevnadar. Kort vei til jakt-terreng.</p>
+                                    <p class="pris-info">500 kr/døgn</p>
+                                    <div class="table-responsive">
+                                        <table class="table table-condensed text-left kort-nokkel-info ">
+                                            <tr>
+                                                <td>Antall rom:</td>
+                                                <td>2</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Toalett:</td>
+                                                <td>Ja</td>
+                                            </tr>
+                                            </tr>
+                                            <tr>
+                                                <td>Dusj:</td>
+                                                <td>Ja</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </template>
+            </div>
+            <div class="col-sm-4 min-col" >
+                <div class="content-area" id='kart'>
+                    <h4>Kart</h4>
+                    <div id='map'></div>
+                </div>
+            </div>
+           
+    </main>
+    <footer class="container-fluid text-center minfooter navbar-fixed-bottom">
+        <p>Her må det vel stå eit eller anna.</p>
+    </footer>
+    <!--Køyrer scriptet som lagar kart etter at alle andre er køyrt   -->
+    <!-- <script 
+    async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5g5902denQTpZ7iVYmct-wTIMUo1VtqI&callback=initMap">
+    </script> -->
+</body>
+
+</html>

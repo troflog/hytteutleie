@@ -1,0 +1,160 @@
+/*STILER FRÅ BOOTSTRAP*/
+
+
+/* Remove the navbar's default margin-bottom and rounded borders */
+
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+
+.row.content {
+    height: 450px
+}
+
+
+/* Set 100% height */
+
+.sidenav {
+    padding-top: 20px;
+    height: 100%;
+}
+
+
+/* Set black background color, white text and some padding */
+
+footer {
+    background-color: grey;
+    color: white;
+    padding: 5px;
+}
+
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+
+@media screen and (max-width: 767px) {
+    .sidenav {
+        height: auto;
+        padding: 15px;
+    }
+    .row.content {
+        height: auto;
+    }
+}
+
+
+/*STILER FRÅ OSS*/
+
+body {
+    background-color: #f1f9ff;
+}
+
+
+
+/*Stiler knyttet til Haugtussa hytteutleie*/
+
+#firmanavn-box {
+    padding-top: 8px;
+    l background-color: #99c4d8;
+}
+
+#firmanavn {
+    font-size: 19px;
+    color: white;
+    padding: 1px;
+    margin: 1px;
+    border: 1px solid white;
+    font-weight: bold;
+}
+
+#logo {
+    float: left;
+    /*height: 1em;*/
+}
+
+
+/*Navigasjonsbar stiler*/
+
+.min-navbar {
+    background-color: #99c4d8;
+}
+
+.nav.navbar-nav li a {
+    color: white;
+}
+
+.nav.navbar-nav a:hover {
+    color: black;
+}
+
+
+/*Legger til litt*/
+
+.min-main-style {
+    margin-bottom: 50px;
+}
+
+.min-col {
+    padding-right: 2px;
+    padding-left: 2px;
+}
+
+
+/*Definerer egenskapene til ein boks med innhold */
+
+a {
+    color: #333;
+}
+
+a:focus,
+a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.content-area {
+    box-shadow: 1px 1px 1px #888888;
+    border-radius: 2px;
+    background-color: white;
+    padding: 3px;    
+    margin: 2px;
+}
+
+
+/*Klasse for å vis minimumsinformasjon for ei hytte*/
+
+.mini-text {
+    padding: 5px;
+}
+
+.mini-bilde {
+    max-width: 50%;
+}
+
+.pris-info {
+    font-weight: bold;
+    color: blue;
+}
+
+.kort-nokkel-info td {
+    font-size: 12px;
+    border: none;
+}
+
+#map {
+    height: 250px;
+    padding: 2px;
+}
+
+
+/*Footer stiler*/
+
+.minfooter {
+    background-color: #99c4d8;
+    height: 35px;
+    
+    color: white;
+}
