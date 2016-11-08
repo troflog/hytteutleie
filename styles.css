@@ -26,12 +26,6 @@
 
 /* Set black background color, white text and some padding */
 
-footer {
-    background-color: grey;
-    color: white;
-    padding: 5px;
-}
-
 
 /* On small screens, set height to 'auto' for sidenav and grid */
 
@@ -46,15 +40,42 @@ footer {
 }
 
 
-/*STILER FRÅ OSS*/
+/*STILER FOR HEILE DOKUMENTET*/
 
 body {
-    background-color: #f1f9ff;
+   background: url("horn.jpg"); 
+   background-color: #f1f9ff;   
+    height: 100%;
+         width: 100%;
+    background-size: 100% auto;
+   background-repeat: no-repeat;   
+   margin: 0 0 140px;
+}
+
+main {
+    /*You can increase this value to allow more space 
+    between the bottom of the main element and the top of the footer*/
+    padding-bottom: 30px;
+}
+
+html {
+    position: relative;
+    /*min-height: 100%;*/
+}
+
+/*Kode som er lagt til for å fiks footeren*/
+
+.minfooter {
+    background-color: #99c4d8;
+    position: absolute;
+    bottom: 0;
+    min-height: 35px;
+    width: 100%;
+    color: white;
 }
 
 
-
-/*Stiler knyttet til Haugtussa hytteutleie*/
+/*STILER FOR HOVUDDEL*/
 
 #firmanavn-box {
     padding-top: 8px;
@@ -119,8 +140,8 @@ a:hover {
     box-shadow: 1px 1px 1px #888888;
     border-radius: 2px;
     background-color: white;
-    padding: 3px;    
-    margin: 2px;
+    padding: 3px;
+    margin: 5px;
 }
 
 
@@ -150,11 +171,4 @@ a:hover {
 }
 
 
-/*Footer stiler*/
 
-.minfooter {
-    background-color: #99c4d8;
-    height: 35px;
-    
-    color: white;
-}
