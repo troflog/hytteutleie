@@ -1,0 +1,147 @@
+/*STILER FRA BOOTSTRAP*/
+
+
+/* Remove the navbar's default margin-bottom and rounded borders */
+
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+
+.row.content {
+    height: 450px
+}
+
+
+/* Set gray background color and 100% height */
+
+.sidenav {
+    padding-top: 20px;
+    background-color: #f1f1f1;
+    height: 100%;
+}
+
+
+/* Set black background color, white text and some padding */
+
+footer {
+    background-color: #555;
+    color: white;
+    padding: 15px;
+}
+
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+
+@media screen and (max-width: 767px) {
+    .row.content {
+        height: auto;
+    }
+}
+
+
+/*STILER FOR HEILE DOKUMENTET*/
+
+body {
+    /* Location of the image */
+    background-image: url(kannesteinen.jpg);
+    /* Image is centered vertically and horizontally at all times */
+    background-position: center center;
+    /* Image doesn't repeat */
+    background-repeat: no-repeat;
+    /* Makes the image fixed in the viewport so that it doesn't move when 
+         the content height is greater than the image height */
+    background-attachment: fixed;
+    /* This is what makes the background image rescale based on its container's size */
+    background-size: cover;
+    /* Pick a solid background color that will be displayed while the background image is loading */
+    background-color: #464646;
+    /* SHORTHAND CSS NOTATION
+       * background: url(background-photo.jpg) center center cover no-repeat fixed;
+    */
+    /*Den er sett for å få footer nederst*/
+    margin-bottom: 50px;
+}
+
+main {
+    /*Dette er kode for å få footeren 
+    til å ligge på bunnen */
+    padding-bottom: 30px;
+}
+
+html {
+    /*Dette er kode for å få footeren 
+    til å ligge på bunnen */
+    position: relative;
+    min-height: 100%;
+}
+
+footer {
+    /*Dette er kode for å få footeren 
+    til å ligge på bunnen */
+    /*height: 15px;      */
+    position: absolute;
+    bottom: 0;
+    height: 48px;
+    width: 100%;
+}
+
+
+/*STYLING FOR TOPPMENYEN*/
+
+.min-nav {
+    border: 0px;
+}
+
+.firma-navn-boks{
+  padding-top: 8px;
+}
+
+.firma-navn {
+    color: white;
+    font-size: 20px;
+    padding: 3px;   
+    border: 2px solid white;
+    font-weight: bold;
+}
+
+.nav-footer-bakgrunn-farge {
+    background-color: #99c4d8;
+    font-size: 16px;
+}
+
+
+/*Endrar for standard innstillingane i bootstrap
+for hoover,focus and disable*/
+
+.navbar-inverse .navbar-nav > li > a {
+    color: white;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus {
+    text-decoration: none;
+    color: black;
+}
+
+.navbar-inverse .navbar-nav > .disabled > a,
+.navbar-inverse .navbar-nav > .disabled > a:hover,
+.navbar-inverse .navbar-nav > .disabled > a:focus {
+    color: white;
+}
+
+
+/*STILER KUN FOR INNHOLDET*/
+
+/*Denne klassen beskriver utsjånaden til kvar
+innholdsboks*/
+.content-area {
+    box-shadow: 1px 1px 1px #888888;
+    border-radius: 2px;
+    background-color: white;
+    padding: 3px;
+    margin: 5px;
+}
