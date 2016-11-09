@@ -3,6 +3,7 @@
 var hytter;
 
 // Denne funksjonen tegnar kartet og setter inn alle markeringar
+//https://developers.google.com/maps/documentation/javascript/adding-a-google-map
 function initMap() {
     var sted = {
         lat: 61.893,
@@ -37,19 +38,21 @@ function makeMap() {
 
 // Denne skriv alle hyttene til skjerm
 function fyllHytter(hytter) {
-    var utleieHytter = document.getElementById('hyttefelt');
+    var hyttefelt = document.getElementById('hyttefelt');
+    //Henter ut innholdet i templaten
     var temp = document.querySelector('#hytte-temp').content;
 
     for (i = 0; i < hytter.length; i++) {
+        //Kloner templaten
         var clone = document.importNode(temp, true);
+        //Fyller inn med informasjon frå hytter.json
         clone.querySelectorAll('a')[0].href = 'hytteinfo.html?id=' + hytter[i].id;
         clone.querySelectorAll('p')[0].textContent = 'Område:' + hytter[i].omrade; // ='dsfa';// hytter[i].omrade;
-
-        utleieHytter.appendChild(clone);
-
+        //Legger til hytta
+        hyttefelt.appendChild(clone);
 
     }
-    // body...
+    
 }
 
 // Denne køyrar ikkje før heile dokumentet er lasta
