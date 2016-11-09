@@ -75,11 +75,15 @@ html {
 }
 
 
-/*STILER FOR HOVUDDEL*/
+/*STILER FOR NAVIGASJONSBAR*/
 
 #firmanavn-box {
     padding-top: 8px;
     l background-color: #99c4d8;
+}
+
+.firmanavn-felt{
+
 }
 
 #firmanavn {
@@ -95,9 +99,6 @@ html {
     float: left;
     /*height: 1em;*/
 }
-
-
-/*Navigasjonsbar stiler*/
 
 .min-navbar {
     background-color: #99c4d8;
@@ -126,9 +127,7 @@ html {
 
 /*Definerer egenskapene til ein boks med innhold */
 
-a {
-    color: #333;
-}
+
 
 a:focus,
 a:hover {
