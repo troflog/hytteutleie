@@ -1,11 +1,8 @@
-//Globale variabler som vi treng
-// var hytter= [{ 'id': '001', 'loc': [61.893, 5.533],'omrade':'Skog' },
-//     { 'id': '002', 'loc': [62, 5.531722],'omrade':'Hav' }
-// ];
-var map;
+// Global variable for hytter. Legger den her for at alle funksjonen skal ha tilgong
+// I denne vert hytter.json lagra.
 var hytter;
 
-
+// Denne funksjonen tegnar kartet og setter inn alle markeringar
 function initMap() {
     var sted = {
         lat: 61.893,
@@ -29,6 +26,7 @@ function initMap() {
     }
 }
 
+// Dette er ein funksjon som utførerer initMap ved å sende den til google api
 function makeMap() {
     var script = document.createElement('script');
     script.type = 'text/javascript';
@@ -37,6 +35,7 @@ function makeMap() {
     document.body.appendChild(script);
 }
 
+// Denne skriv alle hyttene til skjerm
 function fyllHytter(hytter) {
     var utleieHytter = document.getElementById('hyttefelt');
     var temp = document.querySelector('#hytte-temp').content;
@@ -53,11 +52,8 @@ function fyllHytter(hytter) {
     // body...
 }
 
-
+// Denne køyrar ikkje før heile dokumentet er lasta
 $(document).ready(function() {
-
-
-
     //Les fila med hytter    
     $.getJSON('hytter.json', function(datafile) {
         hytter = datafile.hytter;
