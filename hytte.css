@@ -136,12 +136,45 @@ for hoover,focus and disable*/
 
 /*STILER KUN FOR INNHOLDET*/
 
+/*Får ned lufta mellom bootstrap kolonner*/
+.min-col {
+    padding-right: 2px;
+    padding-left: 2px;
+}
+
 /*Denne klassen beskriver utsjånaden til kvar
 innholdsboks*/
 .content-area {
     box-shadow: 1px 1px 1px #888888;
     border-radius: 2px;
     background-color: white;
-    padding: 3px;
+    padding: 1px;
     margin: 5px;
+}
+
+
+.mini-bilde {
+    max-width: 50%;
+}
+
+.nokkel-tekst {
+    padding: 5px;
+}
+
+
+
+.pris-info {
+    font-weight: bold;
+    color: blue;
+}
+
+.kort-nokkel-info td {
+    font-size: 12px;
+    border: none;
+}
+
+/*Kartet må ha ein størrelse for at vi skal sjå det*/
+#map {
+    height: 280px;
+    padding: 2px;
 }
