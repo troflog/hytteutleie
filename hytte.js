@@ -1,6 +1,7 @@
 // Global variable for hytter. Legger den her for at alle funksjonen skal ha tilgong
 // I denne vert hytter.json lagra.
 var hytter;
+var map;
 
 // Denne funksjonen tegnar kartet og setter inn alle markeringar
 //https://developers.google.com/maps/documentation/javascript/adding-a-google-map
@@ -14,6 +15,7 @@ function initMap() {
         zoom: 8,
         center: sted
     });
+
     for (i = 0; i < hytter.length; i++) {
         var hytte = hytter[i]
         if (sjekkFilter(hytte, valg)) {
@@ -29,13 +31,26 @@ function initMap() {
     }
 }
 
+
+function updateMarkers() {
+    
+}
+
+
 // Dette er ein funksjon som utførerer initMap ved å sende den til google api
-function makeMap() {
+function makeMap() {   
+    //Remove all scripts
+    var scripts = document.getElementsByTagName('script');
+    for (var j=scripts.length-1;j>2;j--){
+        scripts[j].parentNode.removeChild(scripts[j]);
+    }    
     var script = document.createElement('script');
+    script.id = "gmaps";         
     script.type = 'text/javascript';
     script.src = 'https://maps.googleapis.com/maps/api/js?key=' +
         'AIzaSyB5g5902denQTpZ7iVYmct-wTIMUo1VtqI&callback=initMap';
     document.body.appendChild(script);
+    console.log("hei");
 }
 
 // Denne skriv alle hyttene til skjerm
@@ -49,6 +64,10 @@ function fyllHytter() {
         if (sjekkFilter(hytter[i], valg)) {
             //Kloner templaten
             var clone = document.importNode(temp, true);
+            //Setter inn bilde av hytta
+            bilde  = clone.querySelector('img');
+            bilde.src = hytter[i].bilde;
+
             //Fyller inn med informasjon frå hytter.json
             clone.querySelectorAll('a')[0].href = 'hytteinfo.html?id=' + hytter[i].id;
             p = clone.querySelectorAll('p'); 
@@ -185,14 +204,25 @@ function valgEvent() {
     if (validerPris()) {
         //Fjernar alle hyttene utanom template (some children[0])
         var node = document.getElementById("hyttefelt");
-        var children = node.children;
-        for (i = 1; i < children.length; i++) {
-             node.removeChild(children[i]);
-        }
-        children = node.children;
-        fyllHytter();
-        makeMap();
+        var children = node.children;       
 
+        while (children.length > 1) {
+            children[children.length-1].remove();            
+        }
+
+        // //Må lage ein variabel som lagrar children.length. Kan ikkje bruke
+        // //children.length i for løkka då den vert mindre etter kvart som 
+        // //vi slettar element.
+        // var numberOfChildren = children.length;
+        // var count = 1;
+        // for (j = 1; j < numberOfChildren; j++) {            
+        //     node.removeChild(children[count]);
+        //     count    
+
+        // }
+        //children = node.children;
+        fyllHytter();        
+        makeMap();
     }
 
 
@@ -222,13 +252,4 @@ $(document).ready(function() {
         fyllHytter();
         makeMap();
     });
-    
-
-
-
-
-
-
-
-
 });
