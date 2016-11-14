@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Haugen hytter</title>
+    <title>Haug hytter</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -19,7 +19,7 @@
                 <a class="navbar-brand firma-navn-boks" href="#">
                     <div class="firma-navn">
                         <object data="logo.svg" type="image/svg+xml"></object>
-                        Haugen hytter
+                        Haug hytter
                     </div>
                 </a>
                 <!-- Dette er kode frå bootstrap for å lage ein navigasjonsmeny som kan kollapse -->
@@ -42,20 +42,20 @@
     <div class="container text-center">
         <div class="row content">
             <div class="col-sm-2  text-left min-col">
-                <div class="content-area">
+                <div class="content-area hytte-valg-boks">
                     <h4>Område</h4>
                     <div id="omraade-sjekk">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" id="fjell-sjekk">Fjell</label>
+                                <input type="checkbox" id="fjell-sjekk" onchange="valgEvent()">Fjell</label>
                         </div>
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" id="skog-sjekk">Skog</label>
+                                <input type="checkbox" id="skog-sjekk" onchange="valgEvent()">Skog</label>
                         </div>
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" id="hav-sjekk">Hav</label>
+                                <input type="checkbox" id="hav-sjekk" onchange="valgEvent()">Hav</label>
                         </div>
                     </div>
                     <h4>Antall soverom</h4>
@@ -80,18 +80,18 @@
                     <h4>Pris</h4>
                     <div id="finn-pris">
                         <div class="input-group">
-                            <input class="form-control" placeholder="fra" name="firstname" type="text" />
-                            <input class="form-control" placeholder="til" name="lastname" type="text" />
-                            <button type="button" style="margin-top: 2px" mar " class="btn btn-primary ">Søk</button>
-                        </div>
-                    </div>
+                            <input class="form-control" placeholder="fra" name="minpris" id="minpris" type='text' onkeypress="kunNummer(event)" />
+                            <input class="form-control" placeholder="til" name="maxpris" id="maxpris" type='text' onkeypress="kunNummer(event)" />
+                            <button type="button" style="margin-top: 2px" mar " class="btn btn-primary " onclick="valgEvent() ">Søk</button>
+                            </div> 
+                       </div>
                     <hr>
-                </div>
+                </div>                
             </div>
             <div class="col-sm-6 min-col " id="hyttefelt">               
                 <template id='hytte-temp'>
                     <div class="content-area ">
-                        <a href="hytteinfo.html?id=" id=" mini-info-001 ">
+                        <a href="hytteinfo.html?id=" class=" content " id=" mini-info-001 ">
                             <div class="media text-left ">
                                 <img class="pull-left mini-bilde img-responsive " id="img-001 " src="hytte.jpg ">
                                 <div class="media-body nokkel-tekst ">
@@ -123,7 +123,7 @@
                 </template>
             </div>
             <div class="col-sm-4 min-col " >
-                <div class="content-area" id='kart'>                    
+                <div class="content-area " id='kart'>                    
                     <div id='map'></div>
                 </div>
             </div>

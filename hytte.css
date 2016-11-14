@@ -148,8 +148,21 @@ innholdsboks*/
     box-shadow: 1px 1px 1px #888888;
     border-radius: 2px;
     background-color: white;
-    padding: 1px;
+    padding: 1px;    
     margin: 5px;
+}
+
+
+a:focus,
+a:hover {
+    text-decoration: none;
+    color:#337ab7;    
+}
+
+
+.hytte-valg-boks{
+    padding-left: 4px;
+    padding-right: 3px;
 }
 
 

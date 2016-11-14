@@ -1,14 +1,9 @@
 {
     "hytter": [
-     	{ "id": "001", "loc": [62, 5.541722], "omrade": "Fjell" },
-        { "id": "002", "loc": [61.893, 5.533], "omrade": "Skog" },
-        { "id": "003", "loc": [61.8, 5.11722], "omrade": "Hav" },
+     	{ "id": "001", "loc": [62, 5.541722], "omrade": "Fjell","soverom":2,"toalett":"ja",
+      	"dusj":"ja","bilde":"hytte001.jpg","kortifno":"Fin hytte på fjellet","info":"Bla bla bla"}        
         
-        { "id": "003", "loc": [61.8, 5.11722], "omrade": "Hav" },
-        { "id": "003", "loc": [61.8, 5.11722], "omrade": "Hav" },
-        { "id": "003", "loc": [61.8, 5.11722], "omrade": "Hav" },
-        { "id": "004", "loc": [61.929539, 5.078945], "omrade": "Hav" },
-        { "id": "005", "loc": [61.929539, 5.178945], "omrade": "Skog" }
+       
     ]
 
 }
