@@ -193,5 +193,6 @@ a:hover {
 /*Kartet må ha ein størrelse for at vi skal sjå det*/
 #map {
     height: 280px;
+    width: 300px;
     padding: 2px;
 }

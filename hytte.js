@@ -5,52 +5,39 @@ var map;
 
 // Denne funksjonen tegnar kartet og setter inn alle markeringar
 //https://developers.google.com/maps/documentation/javascript/adding-a-google-map
-function initMap() {
-    var sted = {
-        lat: 61.893,
-        lng: 5.531722
-    };
-
-    map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 8,
-        center: sted
-    });
-
-    for (i = 0; i < hytter.length; i++) {
-        var hytte = hytter[i]
-        if (sjekkFilter(hytte, valg)) {
-            marker = new google.maps.Marker({
-                position: new google.maps.LatLng(hytte.loc[0], hytte.loc[1]),
-                map: map,
-                url: 'hytteinfo.html?id=' + hytte.id
-            });
-            google.maps.event.addListener(marker, 'click', function() {
-                window.location.href = this.url;
-            });
-        }
-    }
+function addMarker() {
+    $(function() {
+        $("#map").googleMap();
+        for (i = 0; i < hytter.length; i++) {
+            var hytte = hytter[i]
+            if (sjekkFilter(hytte, valg)) {
+                $("#map").addMarker({
+                    coords: hytte.loc, // GPS coords
+                    url: 'hytteinfo.html?id=' + hytte.id // Link to redirect onclick (optional)
+                    
+                });
+            }
+        }       
+    })
 }
 
-
-function updateMarkers() {
-    
+function reDrawMap() {
+    $(function() {
+        $("#map").googleMap();
+    })
 }
+
 
 
 // Dette er ein funksjon som utførerer initMap ved å sende den til google api
-function makeMap() {   
-    //Remove all scripts
-    var scripts = document.getElementsByTagName('script');
-    for (var j=scripts.length-1;j>2;j--){
-        scripts[j].parentNode.removeChild(scripts[j]);
-    }    
-    var script = document.createElement('script');
-    script.id = "gmaps";         
-    script.type = 'text/javascript';
-    script.src = 'https://maps.googleapis.com/maps/api/js?key=' +
-        'AIzaSyB5g5902denQTpZ7iVYmct-wTIMUo1VtqI&callback=initMap';
-    document.body.appendChild(script);
-    console.log("hei");
+function makeMap() {
+    var sted = [61.893, 5.531722];
+    $(function() {
+        $("#map").googleMap({
+            zoom: 10, // Initial zoom level (optional)
+            coords: sted // Map center (optional)
+        });
+    });
 }
 
 // Denne skriv alle hyttene til skjerm
@@ -65,15 +52,15 @@ function fyllHytter() {
             //Kloner templaten
             var clone = document.importNode(temp, true);
             //Setter inn bilde av hytta
-            bilde  = clone.querySelector('img');
+            bilde = clone.querySelector('img');
             bilde.src = hytter[i].bilde;
 
             //Fyller inn med informasjon frå hytter.json
             clone.querySelectorAll('a')[0].href = 'hytteinfo.html?id=' + hytter[i].id;
-            p = clone.querySelectorAll('p'); 
+            p = clone.querySelectorAll('p');
             p[0].textContent = 'Område:' + hytter[i].omrade;
             p[1].textContent = hytter[i].kortinfo;
-            p[2].textContent = hytter[i].pris  +" kr/døgn";
+            p[2].textContent = hytter[i].pris + " kr/døgn";
             td = clone.querySelectorAll("td");
             td[1].textContent = hytter[i].rom;
             td[3].textContent = hytter[i].toalett;
@@ -92,7 +79,7 @@ function sjekkFilter(hytte, valg) {
     var vis = true;
     //Sjekk om vi har fjell,skog eller hav
     if (valg.omrade.length > 0) {
-        vis = false;        
+        vis = false;
         for (j = 0; j < valg.omrade.length; j++) {
             if (hytte.omrade.toLowerCase() == valg.omrade[j]) {
                 vis = true;
@@ -100,30 +87,30 @@ function sjekkFilter(hytte, valg) {
         }
     }
     //Returnere false sidan vi ikkje har treff uansett
-    if(vis == false){
+    if (vis == false) {
         return vis;
     }
-    
+
     //Sjekk om vi har sett antall rom
-    if(valg.rom.length >0){
+    if (valg.rom.length > 0) {
         vis = false;
         rom = hytte.rom
-        for(j = 0;j<valg.rom.length;j++){
-            if(hytte.rom == valg.rom[j]){
+        for (j = 0; j < valg.rom.length; j++) {
+            if (hytte.rom == valg.rom[j]) {
                 vis = true
             }
-            if((valg.rom[j] == 4) & hytte.rom >4 ){
+            if ((valg.rom[j] == 4) & hytte.rom > 4) {
                 vis = true
             }
         }
     }
     //Returnere false sidan vi ikkje har treff uansett
-    if(vis == false){
+    if (vis == false) {
         return vis;
     }
 
     //Sjekk om vi er innanfor prisrange
-    if((valg.minPris <= hytte.pris) & (valg.maxPris >= hytte.pris)){
+    if ((valg.minPris <= hytte.pris) & (valg.maxPris >= hytte.pris)) {
         vis = true;
     } else {
         vis = false;
@@ -151,33 +138,33 @@ function hytteValg() {
     }
 
     //Sjekk kor mange rom som er valgt
-    valg.rom =[];    
-    if ($("#1rom-sjekk").is(':checked')){
+    valg.rom = [];
+    if ($("#1rom-sjekk").is(':checked')) {
         valg.rom.push(1);
     }
-    if ($("#2rom-sjekk").is(':checked')){
+    if ($("#2rom-sjekk").is(':checked')) {
         valg.rom.push(2);
     }
-    if ($("#3rom-sjekk").is(':checked')){
+    if ($("#3rom-sjekk").is(':checked')) {
         valg.rom.push(3);
     }
-    if ($("#4rom-sjekk").is(':checked')){
+    if ($("#4rom-sjekk").is(':checked')) {
         valg.rom.push(4);
     }
 
     //Sjekk kva priser range som er valgt
-    var minPris = document.getElementById("minpris").value;    
-    if(minPris === ""){
+    var minPris = document.getElementById("minpris").value;
+    if (minPris === "") {
         valg.minPris = -100000; //Setter den til eit lite tall
     } else {
         valg.minPris = parseInt(minPris);
     }
-    var maxPris = document.getElementById("maxpris").value;  
-    if(maxPris === ""){
+    var maxPris = document.getElementById("maxpris").value;
+    if (maxPris === "") {
         valg.maxPris = 90071992547409; //Setter den til eit stort tal
     } else {
         valg.maxPris = parseInt(maxPris);
-    }  
+    }
     //Retanerar hyttevalg
     return valg;
 }
@@ -186,17 +173,17 @@ function hytteValg() {
 //valgEvent() og vise ei feilmelding under fra feltet
 function validerPris() {
     var minPris = document.getElementById("minpris").value;
-    var maxPris = document.getElementById("maxpris").value;            
+    var maxPris = document.getElementById("maxpris").value;
     error = document.getElementById("error-pris");
-    if (minPris !=="" & maxPris !=="" & (parseInt(minPris) >= parseInt(maxPris))) {        
+    if (minPris !== "" & maxPris !== "" & (parseInt(minPris) >= parseInt(maxPris))) {
         error.innerHTML = 'Fra pris er større en til pris';
         return false;
-    } else {        
+    } else {
         error.innerHTML = '';
         return true
     }
 
-  
+
 }
 
 //Denne funksjonen skal starte når vi har endra noko i filtreringsfeltet
@@ -204,10 +191,10 @@ function valgEvent() {
     if (validerPris()) {
         //Fjernar alle hyttene utanom template (some children[0])
         var node = document.getElementById("hyttefelt");
-        var children = node.children;       
+        var children = node.children;
 
         while (children.length > 1) {
-            children[children.length-1].remove();            
+            children[children.length - 1].remove();
         }
 
         // //Må lage ein variabel som lagrar children.length. Kan ikkje bruke
@@ -221,8 +208,9 @@ function valgEvent() {
 
         // }
         //children = node.children;
-        fyllHytter();        
-        makeMap();
+        fyllHytter();
+        reDrawMap();
+        addMarker();
     }
 
 
@@ -251,5 +239,6 @@ $(document).ready(function() {
         hytter = datafile.hytter;
         fyllHytter();
         makeMap();
+        addMarker();
     });
 });
