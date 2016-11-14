@@ -43,52 +43,54 @@
         <div class="row content">
             <div class="col-sm-2  text-left min-col">
                 <div class="content-area hytte-valg-boks">
-                    <h4>Område</h4>
-                    <div id="omraade-sjekk">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" id="fjell-sjekk" onchange="valgEvent()">Fjell</label>
+                    <form onsubmit="valgEvent()">
+                        <h4>Område</h4>
+                        <div id="omraade-sjekk">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="fjell-sjekk" onchange="valgEvent()">Fjell</label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="skog-sjekk" onchange="valgEvent()">Skog</label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="hav-sjekk" onchange="valgEvent()">Hav</label>
+                            </div>
                         </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" id="skog-sjekk" onchange="valgEvent()">Skog</label>
+                        <h4>Antall soverom</h4>
+                        <div id="rom-sjekk">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="1rom-sjekk" onchange="valgEvent()"">1 soverom</label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="2rom-sjekk" onchange="valgEvent()">2 soverom</label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="3rom-sjekk" onchange="valgEvent()">3 soverom</label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="4rom-sjekk" onchange="valgEvent()">4+ soverom</label>
+                            </div>
                         </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" id="hav-sjekk" onchange="valgEvent()">Hav</label>
+                        <h4>Pris</h4>
+                        <div id="finn-pris">
+                            <div class="input-group">
+                                <input class="form-control" placeholder="fra" name="minpris" id="minpris" type='text' onkeypress="kunNummer(event)" type="value" />
+                                <p ><span class="error-msg" id="error-pris"></span></p>
+                                <input class="form-control" placeholder="til" name="maxpris" id="maxpris" type='text' onkeypress="kunNummer(event)" />
+                                <button type="button" style="margin-top: 2px" class="btn btn-primary" onclick="valgEvent()">Søk</button>
+                            </div>
                         </div>
-                    </div>
-                    <h4>Antall soverom</h4>
-                    <div id="rom-sjekk">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" id="1rom-sjekk">1 soverom</label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" id="2rom-sjekk">2 soverom</label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" id="3rom-sjekk">3 soverom</label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" id="4rom-sjekk">4+ soverom</label>
-                        </div>
-                    </div>
-                    <h4>Pris</h4>
-                    <div id="finn-pris">
-                        <div class="input-group">
-                            <input class="form-control" placeholder="fra" name="minpris" id="minpris" type='text' onkeypress="kunNummer(event)" />
-                            <input class="form-control" placeholder="til" name="maxpris" id="maxpris" type='text' onkeypress="kunNummer(event)" />
-                            <button type="button" style="margin-top: 2px" mar " class="btn btn-primary " onclick="valgEvent() ">Søk</button>
-                            </div> 
-                       </div>
-                    <hr>
-                </div>                
+                        <hr>
+                </div>
             </div>
-            <div class="col-sm-6 min-col " id="hyttefelt">               
+            <div class="col-sm-6 min-col " id="hyttefelt">
                 <template id='hytte-temp'>
                     <div class="content-area ">
                         <a href="hytteinfo.html?id=" class=" content " id=" mini-info-001 ">
@@ -96,9 +98,9 @@
                                 <img class="pull-left mini-bilde img-responsive " id="img-001 " src="hytte.jpg ">
                                 <div class="media-body nokkel-tekst ">
                                     <ul></ul>
-                                    <p>Område:Fjell</p>
-                                    <p class="kort-hytte-info " id="hytte-sum-001 ">Fin hytte i flotte omgjevnadar. Kort vei til jakt-terreng.</p>
-                                    <p class="pris-info ">500 kr/døgn</p>
+                                    <p></p>
+                                    <p class="kort-hytte-info"></p>
+                                    <p class="pris-info"></p>
                                     <div class="table-responsive ">
                                         <table class="table table-condensed text-left kort-nokkel-info ">
                                             <tr>
@@ -122,13 +124,11 @@
                     </div>
                 </template>
             </div>
-            <div class="col-sm-4 min-col " >
-                <div class="content-area " id='kart'>                    
+            <div class="col-sm-4 min-col ">
+                <div class="content-area " id='kart'>
                     <div id='map'></div>
                 </div>
             </div>
-
-
         </div>
     </div>
     <footer class="container-fluid text-center nav-footer-bakgrunn-farge ">

@@ -1,8 +1,7 @@
 {
     "hytter": [
-     	{ "id": "001", "loc": [62, 5.541722], "omrade": "Fjell","soverom":2,"toalett":"ja",
-      	"dusj":"ja","bilde":"hytte001.jpg","kortifno":"Fin hytte på fjellet","info":"Bla bla bla"}        
-        
+     	{ "id": "001", "loc": [62, 5.541722], "omrade": "Fjell","soverom":2,"toalett":"ja","pris":500,
+      	"dusj":"ja","rom":4,"bilde":"hytte001.jpg","kortinfo":"Fin hytte på fjellet med nærhet til fiskevatn.","langinfo":"Bla bla bla"}              
        
     ]
 

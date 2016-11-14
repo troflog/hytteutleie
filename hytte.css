@@ -79,6 +79,10 @@ html {
     min-height: 100%;
 }
 
+.error-msg{
+    color:red;
+}
+
 footer {
     /*Dette er kode for å få footeren 
     til å ligge på bunnen */

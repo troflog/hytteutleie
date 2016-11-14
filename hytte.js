@@ -51,7 +51,15 @@ function fyllHytter() {
             var clone = document.importNode(temp, true);
             //Fyller inn med informasjon frå hytter.json
             clone.querySelectorAll('a')[0].href = 'hytteinfo.html?id=' + hytter[i].id;
-            clone.querySelectorAll('p')[0].textContent = 'Område:' + hytter[i].omrade; // ='dsfa';// hytter[i].omrade;
+            p = clone.querySelectorAll('p'); 
+            p[0].textContent = 'Område:' + hytter[i].omrade;
+            p[1].textContent = hytter[i].kortinfo;
+            p[2].textContent = hytter[i].pris  +" kr/døgn";
+            td = clone.querySelectorAll("td");
+            td[1].textContent = hytter[i].rom;
+            td[3].textContent = hytter[i].toalett;
+            td[5].textContent = hytter[i].dusj;
+
             //Legger til hytta
             hyttefelt.appendChild(clone);
         }
@@ -65,15 +73,44 @@ function sjekkFilter(hytte, valg) {
     var vis = true;
     //Sjekk om vi har fjell,skog eller hav
     if (valg.omrade.length > 0) {
-        vis = false;
-        omrade = hytte.omrade;
+        vis = false;        
         for (j = 0; j < valg.omrade.length; j++) {
-            if (omrade.toLowerCase() == valg.omrade[j]) {
+            if (hytte.omrade.toLowerCase() == valg.omrade[j]) {
                 vis = true;
             }
         }
     }
+    //Returnere false sidan vi ikkje har treff uansett
+    if(vis == false){
+        return vis;
+    }
+    
+    //Sjekk om vi har sett antall rom
+    if(valg.rom.length >0){
+        vis = false;
+        rom = hytte.rom
+        for(j = 0;j<valg.rom.length;j++){
+            if(hytte.rom == valg.rom[j]){
+                vis = true
+            }
+            if((valg.rom[j] == 4) & hytte.rom >4 ){
+                vis = true
+            }
+        }
+    }
+    //Returnere false sidan vi ikkje har treff uansett
+    if(vis == false){
+        return vis;
+    }
+
+    //Sjekk om vi er innanfor prisrange
+    if((valg.minPris <= hytte.pris) & (valg.maxPris >= hytte.pris)){
+        vis = true;
+    } else {
+        vis = false;
+    }
     return vis;
+
 }
 
 //Denne funksjonen les tilstanden til alle filtrer valgene
@@ -83,6 +120,7 @@ function hytteValg() {
     var valg = {};
     //Sjekk kva område som er valgt
     valg.omrade = [];
+
     if ($("#fjell-sjekk").is(':checked')) {
         valg.omrade.push("fjell");
     }
@@ -93,29 +131,70 @@ function hytteValg() {
         valg.omrade.push("hav");
     }
 
-
     //Sjekk kor mange rom som er valgt
-
-
+    valg.rom =[];    
+    if ($("#1rom-sjekk").is(':checked')){
+        valg.rom.push(1);
+    }
+    if ($("#2rom-sjekk").is(':checked')){
+        valg.rom.push(2);
+    }
+    if ($("#3rom-sjekk").is(':checked')){
+        valg.rom.push(3);
+    }
+    if ($("#4rom-sjekk").is(':checked')){
+        valg.rom.push(4);
+    }
 
     //Sjekk kva priser range som er valgt
-
-
-    //Returnerar hyttevalg
+    var minPris = document.getElementById("minpris").value;    
+    if(minPris === ""){
+        valg.minPris = -100000; //Setter den til eit lite tall
+    } else {
+        valg.minPris = parseInt(minPris);
+    }
+    var maxPris = document.getElementById("maxpris").value;  
+    if(maxPris === ""){
+        valg.maxPris = 90071992547409; //Setter den til eit stort tal
+    } else {
+        valg.maxPris = parseInt(maxPris);
+    }  
+    //Retanerar hyttevalg
     return valg;
 }
 
-
-function valgEvent() {
-    //Fjernar alle hyttene utanom template (some children[0])
-    var node = document.getElementById("hyttefelt");
-    var children = node.children;
-    for (i = 1; i < children.length; i++) {
-        node.removeChild(children[i]);
+//Sjekker om fra pris er større ein til pris. Viss det skjer så skal vi stoppe
+//valgEvent() og vise ei feilmelding under fra feltet
+function validerPris() {
+    var minPris = document.getElementById("minpris").value;
+    var maxPris = document.getElementById("maxpris").value;            
+    error = document.getElementById("error-pris");
+    if (minPris !=="" & maxPris !=="" & (parseInt(minPris) >= parseInt(maxPris))) {        
+        error.innerHTML = 'Fra pris er større en til pris';
+        return false;
+    } else {        
+        error.innerHTML = '';
+        return true
     }
-    children = node.children;
-    fyllHytter();
-    makeMap();
+
+  
+}
+
+//Denne funksjonen skal starte når vi har endra noko i filtreringsfeltet
+function valgEvent() {
+    if (validerPris()) {
+        //Fjernar alle hyttene utanom template (some children[0])
+        var node = document.getElementById("hyttefelt");
+        var children = node.children;
+        for (i = 1; i < children.length; i++) {
+             node.removeChild(children[i]);
+        }
+        children = node.children;
+        fyllHytter();
+        makeMap();
+
+    }
+
 
 }
 
@@ -143,6 +222,9 @@ $(document).ready(function() {
         fyllHytter();
         makeMap();
     });
+    
+
+
 
 
 
