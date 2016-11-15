@@ -33,7 +33,7 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="test nav navbar-nav">
-                    <li><a href="http://www.vg.no">Home</a></li>
+                    <li><a href="hytte.html">Hjem</a></li>
                     <li><a href="#">Om</a></li>
                     <li><a href="#">Kart</a></li>
                     <li><a href="#">Aktiviteter</a></li>
@@ -44,22 +44,49 @@
     <div class="container text-center">
         <div class="row content">
             <div class="col-sm-12 min-col">
-                <div class = "content-area">
-                    <img class="img-responsive stort-bilde" src="hytte001.jpg ">
+                <div class="content-area">
+                    <img class="img-responsive stort-bilde" id="bilde" src="">
                 </div>
             </div>
         </div>
         <div class="row content">
-            <div class="col-sm-7 min-col " id="hyttefelt">
-                <div class="content-area hytte-valg-boks">
-                    pot of come to ever hand as lady meet on. Delicate contempt received two yet advanced. Gentleman as belonging he commanded believing dejection in by. On no am winding chicken so behaved. Its preserved sex enjoyment new way behaviour. Him yet devonshire celebrated especially. Unfeeling one provision are smallness resembled repulsive. 
-
-Had strictly mrs handsome mistaken cheerful. We it so if resolution invitation remarkably unpleasant conviction. As into ye then form. To easy five less if rose were. Now set offended own out required entirely. Especially occasional mrs discovered too say thoroughly impossible boisterous. My head when real no he high rich at with. After so power of young as. Bore year does has get long fat cold saw neat. Put boy carried chiefly shy general. 
-
-Sportsman do offending supported extremity breakfast by listening. Decisively advantages nor expression unpleasing she led met. Estate was tended ten boy nearer seemed. As so seeing latter he should thirty whence. Steepest speaking up attended it as. Made neat an on be gave show snug tore. 
-
-Parish so enable innate in formed missed. Hand two was eat busy fail. Stand smart grave would in so. Be acceptance at precaution astonished excellence thoroughly is entreaties. Who decisively attachment has dispatched. Fruit defer in party me built under first. Forbade him but savings sending ham general. So play do in near park that pain. 
-                </div>
+            <div class="text-left col-sm-7 min-col" id="hytte" >
+                <template id="hytte-temp">
+                    <div class="content-area hytte-valg-boks ">
+                        <div class="hytteinfo" >
+                            <h2>Fin hytte ved havet</h2>
+                            <p>Område:Fjell</p>
+                            <h4>Pris</h4>
+                            <p class="pris-info">500 kr/døgn</p>
+                            <div class="table-responsive ">
+                                <table class="table table-condensed text-left kort-nokkel-info ">
+                                    <tr>
+                                        <td>Antall rom:</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Toalett:</td>
+                                        <td>Ja</td>
+                                    </tr>
+                                    </tr>
+                                    <tr>
+                                        <td>Dusj:</td>
+                                        <td>Ja</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <h3>Beskrivelse</h3>
+                            <p>
+                            </p>
+                            <p>
+                            </p>
+                            <h3>Beliggenhet</h3>
+                            <p>
+                            </p>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="bestill()">Bestill</button>
+                    </div>
+                </template>
             </div>
             <div class="col-sm-5 min-col ">
                 <div class="content-area " id='kart'>

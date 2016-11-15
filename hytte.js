@@ -219,30 +219,21 @@ function kunNummer(evt) {
     }
 }
 
-function prisInputTom() {
-   
-}
-
-
 
 // Denne køyrar ikkje før heile dokumentet er lasta
 $(document).ready(function() {
-    //Les fila med hytter    
+    //Les fila med hytter.     
     $.getJSON('hytter.json', function(datafile) {
         hytter = datafile.hytter;
         fyllHytter();
         makeMap();
         addMarker();
 
-
-
-
-
         //Dersom vi har tømt prisboksen vil valgEvent bli trigga
         $("#minpris").keyup(function() {
         if (!this.value) {
             valgEvent();
-        }
+        }        
         });
          $("#maxpris").keyup(function() {
             if (!this.value) {
