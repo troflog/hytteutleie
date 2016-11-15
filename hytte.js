@@ -195,26 +195,15 @@ function valgEvent() {
 
         while (children.length > 1) {
             children[children.length - 1].remove();
-        }
-
-        // //Må lage ein variabel som lagrar children.length. Kan ikkje bruke
-        // //children.length i for løkka då den vert mindre etter kvart som 
-        // //vi slettar element.
-        // var numberOfChildren = children.length;
-        // var count = 1;
-        // for (j = 1; j < numberOfChildren; j++) {            
-        //     node.removeChild(children[count]);
-        //     count    
-
-        // }
-        //children = node.children;
+        }      
         fyllHytter();
         reDrawMap();
         addMarker();
     }
-
-
 }
+
+
+
 
 
 
@@ -230,6 +219,10 @@ function kunNummer(evt) {
     }
 }
 
+function prisInputTom() {
+   
+}
+
 
 
 // Denne køyrar ikkje før heile dokumentet er lasta
@@ -240,5 +233,23 @@ $(document).ready(function() {
         fyllHytter();
         makeMap();
         addMarker();
+
+
+
+
+
+        //Dersom vi har tømt prisboksen vil valgEvent bli trigga
+        $("#minpris").keyup(function() {
+        if (!this.value) {
+            valgEvent();
+        }
+        });
+         $("#maxpris").keyup(function() {
+            if (!this.value) {
+                valgEvent();
+            }
+        });
+
+
     });
 });
