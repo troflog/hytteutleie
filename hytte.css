@@ -149,7 +149,7 @@ for hoover,focus and disable*/
 /*Denne klassen beskriver utsjånaden til kvar
 innholdsboks*/
 .content-area {
-    box-shadow: 1px 1px 1px #888888;
+    box-shadow: 2px 2px 2px #888888;
     border-radius: 2px;
     background-color: white;
     padding: 1px;    
@@ -174,11 +174,18 @@ a:hover {
     max-width: 50%;
 }
 
+.stort-bilde{
+    /*max-width: 700px;*/
+    margin: 0 auto;
+    width:75%;    
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 2px;
+    border-color: white ;
+}
 .nokkel-tekst {
     padding: 5px;
 }
-
-
 
 .pris-info {
     font-weight: bold;
@@ -192,7 +199,6 @@ a:hover {
 
 /*Kartet må ha ein størrelse for at vi skal sjå det*/
 #map {
-    height: 280px;
-    width: 300px;
+    height: 280px;    
     padding: 2px;
 }

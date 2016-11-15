@@ -4,12 +4,12 @@
       	"dusj":"ja","rom":4,"bilde":"hytte001.jpg","kortinfo":"Fin hytte på fjellet med nærhet til fiskevatn.",
         "langinfo":"Bla bla bla"
         },
-        { "id": "002", "loc": [61.8, 5.541722], "omrade": "Hav","toalett":"ja","pris":5000,
-      	"dusj":"ja","rom":4,"bilde":"hytte002.jpg","kortinfo":"Fin hytte på fjellet med nærhet til fiskevatn.",
+        { "id": "002", "loc": [61.9, 5.541722], "omrade": "Hav","toalett":"ja","pris":5000,
+      	"dusj":"ja","rom":4,"bilde":"hytte002.jpg","kortinfo":"Enkel hytte i enkle omgjevnadar.",
         "langinfo":"Bla bla bla"
         },
-         { "id": "003", "loc": [61.8, 5.521722], "omrade": "Skog","toalett":"ja","pris":55,
-      	"dusj":"ja","rom":4,"bilde":"hytte002.jpg","kortinfo":"Fin hytte på fjellet med nærhet til fiskevatn.",
+         { "id": "003", "loc": [61.95, 5.511722], "omrade": "Skog","toalett":"ja","pris":55,
+      	"dusj":"ja","rom":4,"bilde":"hytte003.jpg","kortinfo":"Her kan du kose deg med raudvin og strå.",
         "langinfo":"Bla bla bla"
         }                                                      
        
