@@ -5,8 +5,8 @@ var map;
 
 // Denne funksjonen tegnar kartet og setter inn alle markeringar
 //https://developers.google.com/maps/documentation/javascript/adding-a-google-map
-function addMarker() {
-    $(function() {
+//Den brukar også ein jquery plugin funne på http://tilotiti.github.io/jQuery-Google-Map/
+function addMarker() {    
         $("#map").googleMap();
         for (i = 0; i < hytter.length; i++) {
             var hytte = hytter[i]
@@ -18,26 +18,22 @@ function addMarker() {
                 });
             }
         }       
-    })
+    
 }
 
-function reDrawMap() {
-    $(function() {
-        $("#map").googleMap();
-    })
+function reDrawMap() {    
+        $("#map").googleMap();    
 }
 
 
 
 // Dette er ein funksjon som utførerer initMap ved å sende den til google api
 function makeMap() {
-    var sted = [61.893, 5.531722];
-    $(function() {
+    var sted = [61.893, 5.531722];    
         $("#map").googleMap({
             zoom: 10, // Initial zoom level (optional)
             coords: sted // Map center (optional)
-        });
-    });
+        });    
 }
 
 // Denne skriv alle hyttene til skjerm
